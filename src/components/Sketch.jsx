@@ -1,37 +1,47 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 
 const Sketch = () => {
-    const canvasRef = useRef(null);
-    const [isDrawing, setIsDrawing] = useState(false);
+  const canvasRef = useRef(null);
+  const [isDrawing, setIsDrawing] = useState(false);
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const context = canvas?.getContext('2d');
-        if (context) {
-            // Initialize canvas drawing logic here
-        }
-    }, []);
+  const startDrawing = (e) => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    context.strokeStyle = 'red';
+    context.lineWidth = 15;
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+    context.beginPath();
+    context.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    setIsDrawing(true);
+  };
 
-    const startDrawing = (e) => {
-        const canvas = canvasRef.current;
-        const context = canvas?.getContext('2d');
-        if (context) {
-            // Start drawing logic here
-            setIsDrawing(true);
-        }
-    };
+  const draw = (e) => {
+    if (!isDrawing) return;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    context.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    context.stroke();
+  };
 
-    const endDrawing = () => {
-        // End drawing logic here
-        setIsDrawing(false);
-    };
+  const stopDrawing = () => {
+    setIsDrawing(false);
+  };
 
-    return (
-        <div>
-            <button onClick={startDrawing}>Hi </button>
-            <canvas ref={canvasRef} onMouseDown={startDrawing} onMouseUp={endDrawing} />
-        </div>
-    );
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <canvas
+        ref={canvasRef}
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        onMouseUp={stopDrawing}
+        onMouseLeave={stopDrawing}
+        className="border border-black bg-yellow-50"
+        width={1800}
+        height={900}
+      />
+    </div>
+  );
 };
 
 export default Sketch;
