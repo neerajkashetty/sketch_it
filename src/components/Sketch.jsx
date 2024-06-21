@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-
+import Toolbar from './Toolbar';
 const Sketch = () => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -29,14 +29,14 @@ const Sketch = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center bg-red-200 items-center w-screen h-screen">
       <canvas
         ref={canvasRef}
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
-        className="border border-black bg-yellow-50"
+        className="h-screen w-screen bg-yellow-50"
         width={1800}
         height={900}
       />
