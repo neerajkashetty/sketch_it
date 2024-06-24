@@ -1,4 +1,10 @@
-export default function Toolbar () {
+import React, {useState} from "react";
+
+export default function Toolbar ({setIsColorPicker}) {
+
+  function newColor (colour) {
+    setIsColorPicker(colour);
+  }
 
 return(
     <div className="font-bold text-blue-300 flex items-center justify-center ">
@@ -8,9 +14,9 @@ return(
       </label>
       <hr className="h-4/5 mt-1 w-[0.1rem] opacity-100 bg-gray-200 self-stretch "></hr>
       <div className="w-1/12 flex items-center hover:bg-blue-300 hover:text-black rounded-md justify-center">
-        <button>L</button> 
+        <button onClick={() => newColor('red')}>P</button> 
       </div> 
-      <div className="w-1/12 flex items-center hover:bg-blue-300 hover:text-black rounded-md justify-center">
+      <div onClick={() => newColor('blue')} className="w-1/12 flex items-center hover:bg-blue-300 hover:text-black rounded-md justify-center" >
         <button className="">L</button> 
       </div> 
       <div className="w-1/12 flex items-center hover:bg-blue-300 hover:text-black rounded-md  justify-center">

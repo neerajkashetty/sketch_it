@@ -13,10 +13,8 @@ const Share = () => {
             <div className="bg-blue-200 justify-center h-1/4 text-sm items-center rounded-lg font-italic flex basis-1/3">
                 Library
             </div>
-
         </div>
     )
-
 }
 
 export default Share

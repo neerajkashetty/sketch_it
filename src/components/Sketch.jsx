@@ -1,16 +1,18 @@
 import React, { useRef, useState } from 'react';
 import Toolbar from './Toolbar';
 
-const Sketch = () => {
+const Sketch = (colorpicker) => {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [iseraseEnabled, setIsEraseEnabled] = useState(false);
 
+  console.log(colorpicker.colorpicker)
+ 
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
-    context.strokeStyle = 'red';
-    context.lineWidth = 15;
+    context.strokeStyle = colorpicker.colorpicker;
+    context.lineWidth = 2;
     context.lineJoin = 'round';
     context.lineCap = 'round';
     context.beginPath();
