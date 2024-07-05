@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import Toolbar from './Toolbar';
 
 const Sketch = (colorpicker) => {
   const canvasRef = useRef(null);
