@@ -6,7 +6,7 @@ import { SideBar } from "./components/sidebar";
 function App() {
   return (
     <>
-      <div id="start" className=" flex gap-2 ">
+      <div id="start" className=" flex  ">
         <SideBar />
         <LeftPane />
         <RightPane />
